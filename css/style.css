@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.wrap{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.constructor{
+    border: 1px solid gray;
+    padding: 20px;
+}
+.constructor p{
+    text-align: center;
+}
+.meal-item{
+    margin-bottom: 10px;
+}
+.meal-item div{
+    display: inline-block;
+}
+.control{
+    margin-top: 10px;
+}
+.control .add-btn{
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.field input{
+    text-align: center;
+}
+.field{
+    position: relative;
+}
+.field::before{
+    
+    opacity: .5;
+    font-size: 
+    display: block;
+    position: absolute;
+    left: 3px;
+    z-index: 1000;
+    width: 10px;
+    height: 10px;
+}
+.amount::before{
+    content: "г:";  
+}
+.prots::before{
+    content: "б:";
+}
+.carbs::before{
+    content: "у:";
+}
+.fats::before{
+    content: "ж:";
+}
+.kkal::before{
+    content: "к:";
+}
