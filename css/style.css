@@ -22,7 +22,7 @@
 .control{
     margin-top: 10px;
 }
-.control .add-btn{
+.control .add-btn, .remove-btn{
     width: 20px;
     height: 20px;
     border: 1px solid gray;
@@ -30,14 +30,14 @@
     text-align: center;
     cursor: pointer;
 }
-.field input{
+.field input, select{
     text-align: center;
+    height: 20px;
 }
 .field{
     position: relative;
 }
 .field::before{
-    
     opacity: .5;
     font-size: 
     display: block;
