@@ -19,6 +19,7 @@ window.addEventListener("DOMContentLoaded",function(){
     //The main array with all products. Insert here new products
     
     let products=[
+        new Product("none","0","0","0"),
         new Product("rice","0","78.9","0.7"),
         new Product("backweat","0","54.4","3.2"),
         new Product("egg","12.7","0.7","10.9")
