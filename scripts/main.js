@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded",function(){
     
     function Product(n,p,c,f){
         this.amount=100;
-        this.n=n;
+        this.name=n;
         this.prots=p;
         this.carbs=c;
         this.fats=f;
@@ -53,11 +53,39 @@ window.addEventListener("DOMContentLoaded",function(){
             newEl.append(removeBtn);
             constructor.insertBefore(newEl, control);
             removeMealItem();
+            initProductSelect();
         }
+        
+        function fillInputs(products, secetvalue, elements){
+            for(let i=0; i<products.length;i++){
+                if(products[i]["name"]==secetvalue){
+                    elements.forEach(function(item){
+                        if(item.className!==undefined && item.className.indexOf("field")>=0){
+                            item.children[0].value=products[i][item.children[0].name];
+                        }
+                    });
+                }
+            }
+        }
+        
+        function initProductSelect(){
+            let selects=document.getElementsByName("meal");
+            selects.forEach(function(item){
+                item.onchange=function(e){
+                    let selectValue=e.target.value,
+                        elements=e.target.parentNode.childNodes;
+                    fillInputs(products, selectValue, elements);
+                };
+            });
+        }
+        
         addBtn.addEventListener("click", addNewMealItem);
+        initProductSelect();
     }
+    
+    
 
-    new MealConstuctor("constructor");
+    new MealConstuctor("constructor", products);
 });
 
 
