@@ -62,3 +62,6 @@
 .kkal::before{
     content: "к:";
 }
+.results{
+    text-align: center;
+}

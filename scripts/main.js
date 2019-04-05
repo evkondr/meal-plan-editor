@@ -35,7 +35,8 @@ window.addEventListener("DOMContentLoaded",function(){
             addBtn=document.querySelector(".add-btn"),
             mealItme=document.querySelector(".meal-item"),
             control=document.querySelector(".control"),
-            clonedEl=mealItme.cloneNode(true);
+            clonedEl=mealItme.cloneNode(true),
+            results=document.querySelector("#results");
 
         function removeMealItem(){
             let bttns=document.querySelectorAll(".remove-btn");
@@ -44,9 +45,11 @@ window.addEventListener("DOMContentLoaded",function(){
                     let el=e.target.parentNode;
                     if(el.className=="meal-item"){
                         constructor.removeChild(el);
-                    }
+                    };
+                    сountAll();
                 };
-            })
+            });
+            
         }
 
         
@@ -76,6 +79,7 @@ window.addEventListener("DOMContentLoaded",function(){
                         carbs.value=product.ncarbs.toFixed(2);
                         fats.value=product.nfats.toFixed(2);
                         kkal.value=product.nkkal.toFixed(2);
+                        сountAll();
                     }
                 }
             }
@@ -88,6 +92,7 @@ window.addEventListener("DOMContentLoaded",function(){
                     let selectValue=e.target.value,
                         elements=e.target.parentNode.childNodes;
                     fillInputs(products, selectValue, elements);
+                    сountAll();
                 };
             });
         }
@@ -101,6 +106,19 @@ window.addEventListener("DOMContentLoaded",function(){
             constructor.insertBefore(newEl, control);
             removeMealItem();
             initProductSelect();
+        }
+        
+        //*
+        //This function gets all elements that have names like prots, carbs, fats and kkal
+        //Then counts all their values and put these values into results
+        //*
+        function сountAll(){
+            let prots=0, carbs=0, fats=0, kkal=0;
+            document.getElementsByName("prots").forEach(function(itme){return prots+=parseFloat(itme.value)});
+            document.getElementsByName("carbs").forEach(function(itme){return carbs+=parseFloat(itme.value)});
+            document.getElementsByName("fats").forEach(function(itme){return fats+=parseFloat(itme.value)});
+            document.getElementsByName("kkal").forEach(function(itme){return kkal+=parseFloat(itme.value)});
+            results.innerHTML="Итого: "+prots.toFixed(1)+"г, "+carbs.toFixed(1)+"г, "+fats.toFixed(1)+"г, "+kkal.toFixed(1)+"г";
         }
         
         addBtn.addEventListener("click", addNewMealItem);
