@@ -18,8 +18,11 @@ window.addEventListener("DOMContentLoaded",function(){
         }
     }
     
-    //The main array with all products. Insert here new products
     
+    //*
+    //This is the main array with all products. 
+    //Insert new products into this array 
+    //*
     let products=[
         new Product("none","0","0","0", "300"),
         new Product("rice","0","78.9","0.7", "300"),
@@ -27,8 +30,9 @@ window.addEventListener("DOMContentLoaded",function(){
         new Product("egg","12.7","0.7","10.9", "300")
     ]
     
-    //The main 
-    
+    //*
+    //This is the main constructor for Meal planner 
+    //*
     function MealConstuctor(id,products){
         
         let constructor=document.getElementById(id),
@@ -51,7 +55,10 @@ window.addEventListener("DOMContentLoaded",function(){
             });
             
         }
-
+        function validator(el){
+            return /^\d{1,}\.{0,1}\d{0,3}$/.test(el.value);
+          
+        }
         
         
         function fillInputs(products, selectvalue, elements){
@@ -62,18 +69,20 @@ window.addEventListener("DOMContentLoaded",function(){
                     elements.forEach(function(item){
                         if(item.className!==undefined && item.className.indexOf("field")>=0){
                             
-                            if(item.children[0].name=="prots"){prots=item.children[0]; console.log(prots)};
+                            if(item.children[0].name=="prots"){prots=item.children[0];};
                             if(item.children[0].name=="carbs"){carbs=item.children[0]};
                             if(item.children[0].name=="fats"){fats=item.children[0]};
                             if(item.children[0].name=="kkal"){kkal=item.children[0]};
                             if(item.children[0].name=="amount"){amount=item.children[0]};
                              
                             item.children[0].value=products[i][item.children[0].name];
-                            
+                            validator(item.children[0]);
                         }
                     });
                     amount.onchange=function(){
-                        
+                        if(validator(this)!=true){
+                            this.value=0;
+                        }
                         product.count(amount.value);
                         prots.value=product.nprots.toFixed(2);
                         carbs.value=product.ncarbs.toFixed(2);
@@ -97,6 +106,10 @@ window.addEventListener("DOMContentLoaded",function(){
             });
         }
         
+        //*
+        //This function creates new field then creates remove button for just created new field
+        //and inserts it into the constructor 
+        //*
         function addNewMealItem(){
             let removeBtn=document.createElement("div");
             removeBtn.innerHTML="-";
@@ -118,7 +131,7 @@ window.addEventListener("DOMContentLoaded",function(){
             document.getElementsByName("carbs").forEach(function(itme){return carbs+=parseFloat(itme.value)});
             document.getElementsByName("fats").forEach(function(itme){return fats+=parseFloat(itme.value)});
             document.getElementsByName("kkal").forEach(function(itme){return kkal+=parseFloat(itme.value)});
-            results.innerHTML="Итого: "+prots.toFixed(1)+"г, "+carbs.toFixed(1)+"г, "+fats.toFixed(1)+"г, "+kkal.toFixed(1)+"г";
+            results.innerHTML="Итого: "+prots.toFixed(1)+" г, "+carbs.toFixed(1)+" г, "+fats.toFixed(1)+" г, "+kkal.toFixed(1)+" ккал";
         }
         
         addBtn.addEventListener("click", addNewMealItem);

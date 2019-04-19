@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nutrient counting</title>
+    <title>UINFIT meal planner</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="scripts/main.js"></script>
 </head>
 <body>
+   <div class="logo"><img src="./img/logo.png" alt=""></div>
     <div class="wrap">
         <div class="constructor" id="constructor">
             <div class="meal-item">
@@ -16,20 +17,17 @@
                     <option value="backweat">Гречка</option>
                     <option value="egg">яйцо</option>
                 </select>
-                <div class="field amount"><input type="text" name="amount"></div>
-                <div class="field prots"><input type="text" name="prots"></div>
-                <div class="field carbs"><input type="text" name="carbs"></div>
-                <div class="field fats"><input type="text" name="fats"></div>
-                <div class="field kkal"><input type="text" name="kkal"></div>
+                <div class="field amount"><input type="text" name="amount" value="0"></div>
+                <div class="field prots"><input type="text" name="prots" value="0"></div>
+                <div class="field carbs"><input type="text" name="carbs" value="0"></div>
+                <div class="field fats"><input type="text" name="fats" value="0"></div>
+                <div class="field kkal"><input type="text" name="kkal" value="0"></div>
             </div>
             <div class="control">
                 <div id="add" class="add-btn">+</div>
             </div>
-            <div id="results"></div>
+            <div id="results" class="results"></div>
         </div>
     </div>
-    
-    
-    
 </body>
 </html>
